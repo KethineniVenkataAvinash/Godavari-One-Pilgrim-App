@@ -1,0 +1,1 @@
+export { PilgrimWeatherForecastWidget } from './LivePilgrimWeather';

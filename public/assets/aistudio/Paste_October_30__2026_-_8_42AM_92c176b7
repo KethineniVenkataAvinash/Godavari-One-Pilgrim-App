@@ -1,0 +1,1081 @@
+# GODAVARI ONE — Complete Product Blueprint
+
+Product strategy · System architecture · Development roadmap · Screen-by-screen UI specification
+
+[Smart City Technology and Governance in India: Data Platforms, Operations and Public Administration](https://images.openai.com/static-rsc-4/_etm7mizDDl8-jTJfr5eJq5JUX73oO-SP5rK5hXvhRFAj00ZDSsn4do0ZwJGWoK7QEMjlD3zA3gT-HMspEmGoSPJZm8gylow3rcgZSSEaaqa4yLmSScx7F07FsQoWKVjmG9WffimdHB5Su5RVx19jQl46OmBQSoq_xC_Ot4G4Ys?purpose=inline)
+
+[smartcity.in](https://smartcity.in/technology-governance.html?utm_source=chatgpt.com)
+
+# One platform. Four connected interfaces. One operational picture.
+
+Godavari One is a unified digital platform for pilgrims, police, emergency responders, volunteers, municipal teams and event administrators during Godavari Pushkaralu 2027.
+
+Solo developer
+
+Advanced skill level
+
+Multi-interface ecosystem
+
+Safety-critical domain
+
+## 1. Product vision and strategy
+
+The product should not be 15 separate mini-apps. It should be one shared platform with a common backend, common geospatial data, common incident records and role-specific interfaces.
+
+Its defining capability should be the connection between detection → decision → dispatch → public communication → verified resolution.
+
+That is more valuable than simply displaying a map or an AI-generated crowd heatmap.
+
+### Product mission
+
+Help pilgrims find verified information and assistance, while giving authorized event teams a coordinated view of crowd conditions, incidents, facilities and field operations.
+
+### The four interfaces
+
+[ZiyaraCare - AI-Powered Pilgrimage Companion | Emergency SOS &     Navigation for Hajj & Umrah](https://images.openai.com/static-rsc-4/B6KvEjx-LAGXJaa_uJ0GOdbxx5Ne_vHE5CEZrN2sOzjEV15cpDxzY9oH9iup4patNxzTop31RkLAxwyIFn-a71DI4Eoy2wFJpZD2NAvkR156pMB63Ur2q7p-GXyUc4vUd8qj_HwVT05Nk1A0cKsPADvcNjsa76VDg3QDwZQBemI?purpose=inline)
+
+1\. Godavari One — Pilgrim App
+
+Find facilities, get verified event information, navigate approved routes, receive public alerts, submit SOS requests and report missing persons.
+
+Mobile-first PWA; installable on Android and usable in a browser.
+
+[Emergency Command Center (ECC) | Devpost](https://images.openai.com/static-rsc-4/f78xwq8WByWdVq3YfDx7DP4W64Vegpw29Gm6GJCOdHCw38vqBIKIxoPX6eBjay82wEbIhJJ-Kc9AwMeUGDowj_gSrsJhBunKE3_kG2cui6p4tpYCf8WmmXvEm_llbOObaGfXfUfqNU-7DhOnh73kByAcF0nRSzUd4SEaQp99750?purpose=inline)
+
+2\. Godavari One — Authority Command Centre
+
+Monitor incidents, crowd conditions, facilities, teams, alerts, transport and operational performance from one dashboard.
+
+Desktop-first web application for authorized administrators and department operators.
+
+[CERA | Real-Time Multi-Agency Threat Management Platform](https://images.openai.com/static-rsc-4/U1ZqUkTortk2k6WcEjpkq0KE4yjUJz1OXuVrFtZEs8yqaTa16Kiw0IAKghC4aTiA_JHt9_ExARBx5_E8TYspeI8zySUlIrOaS3kdLGpzPXxAt_AkedxQln_PhCkMpMv-EcR_hKUqiFIEyDF29J25Qm7Hi8xedGgewot460a2CaM?purpose=inline)
+
+3\. Godavari One — Responder App
+
+Receive assigned cases, navigate to incidents, update response status, request support and close cases with verified details.
+
+Mobile-first PWA for police, medical, fire, rescue and other authorized response teams.
+
+[Maintenance Team CMMS Software | Mobile-First Maintenance Management | Task360](https://images.openai.com/static-rsc-4/aji96Lu8KoS1fNZ_YEqueykcok4js_lTxmZyvLeh-kjVmhKqtZha_xLRJT7cakp05-iLPi3iyaEFZ_pdO9t4cl7nI_5qSBogPZV7HBiDfT10jieYpmHllLI_OoatBwyfZDIl2w0Yl4L2xouUgxvn8BNRVMpvlFD8310hft3Q9sY?purpose=inline)
+
+4\. Godavari One — Field Operations App
+
+Assign and complete cleaning, facility inspection, volunteer, maintenance and field-verification tasks.
+
+Mobile-first PWA for volunteers, sanitation staff, supervisors and field officers.
+
+### Primary users and permissions
+
+| User role               | Main permissions                                        |
+| ----------------------- | ------------------------------------------------------- |
+| Pilgrim                 | View public data, submit SOS and reports                |
+| Help-desk operator      | Register and update assistance cases                    |
+| Volunteer               | View assigned tasks and submit updates                  |
+| Medical responder       | View and update assigned medical cases                  |
+| Police/rescue responder | View and manage authorized incident assignments         |
+| Field supervisor        | Assign and verify field tasks                           |
+| Department operator     | Manage that department's operational data               |
+| Command-centre operator | Monitor and coordinate cross-department operations      |
+| System administrator    | Manage users, permissions, configuration and audit logs |
+
+Use role-based access control (RBAC), with department and geographic restrictions as additional permission checks.
+
+### Product priorities
+
+Your complete product should have three levels of capability:
+
+| Priority                | Modules                                                                                         | Purpose                      |
+| ----------------------- | ----------------------------------------------------------------------------------------------- | ---------------------------- |
+| P0 — Core safety        | SOS, incident management, responder dispatch, command centre, offline synchronization           | Must work reliably           |
+| P1 — Pilgrim experience | Maps, facilities, alerts, lost-person workflow, multilingual assistance                         | Must be usable by the public |
+| P2 — Event operations   | Crowd analytics, traffic, sanitation, waste, water information, volunteers, healthcare, tourism | Expand operational coverage  |
+
+My recommendation: make P0 the strongest part of the product. The earlier research supports PS-02 as a balanced, demonstrable choice, while PS-03 lost-person workflows and PS-01 crowd monitoring are strong supporting capabilities.&#x20;
+
+Pasted text.txt
+
+Pasted text (2).txt
+
+
+
+## 2. Complete feature blueprint
+
+The platform can contain 15 modules, but they should share a common incident, location, notification and task system.
+
+| #  | Module                 | Main capabilities                                                             | Primary users           |
+| -- | ---------------------- | ----------------------------------------------------------------------------- | ----------------------- |
+| 1  | Crowd intelligence     | People counts, density estimates, hotspot alerts, flow trends                 | Command centre          |
+| 2  | Emergency SOS          | Medical, police, fire, rescue and general assistance requests                 | Pilgrims, responders    |
+| 3  | Incident coordination  | Prioritization, duplicate reports, dispatch, escalation, closure              | Command centre          |
+| 4  | Lost and found         | Missing-person cases, found-person cases, reunification workflow              | Pilgrims, help desks    |
+| 5  | Multilingual assistant | Verified answers, voice input, event information, directions                  | Pilgrims                |
+| 6  | GIS and navigation     | Ghats, roads, facilities, routes, closures and restricted areas               | All users               |
+| 7  | Traffic and parking    | Parking occupancy, road closures, shuttle status and congestion               | Pilgrims, authorities   |
+| 8  | Sanitation             | Toilet status, QR reports, cleaning assignments and verification              | Field teams             |
+| 9  | Waste management       | Bin reports, collection tasks, overflow alerts and completion                 | Municipal teams         |
+| 10 | River safety           | Official water-level alerts, safety zones and reported rescue incidents       | Authorities, pilgrims   |
+| 11 | Command centre         | Unified map, alerts, cases, team status and operational reports               | Administrators          |
+| 12 | Volunteer management   | Registration, roles, shifts, attendance and task allocation                   | Volunteers              |
+| 13 | Medical services       | Hospitals, first aid, medical camps, ambulance requests                       | Pilgrims, medical teams |
+| 14 | Public alerts          | Official announcements, weather alerts, route changes and evacuation notices  | Authorities, pilgrims   |
+| 15 | Heritage and tourism   | Temple information, cultural programmes, audio guides and visitor information | Pilgrims                |
+
+Important boundaries:
+
+- Crowd analytics should estimate crowd levels, not identify individual pilgrims. Do not make facial recognition a default feature.
+- AI-generated risk alerts are recommendations for trained human operators, not automatic declarations of danger.
+- Missing-person records should be private by default. Public screens must not expose sensitive descriptions or photos.
+- Water-quality and bathing-safety information should come from competent authorities. A prototype sensor reading must not be presented as proof that water is safe.
+- Traffic diversions, evacuation instructions and other safety-critical public messages require authorized approval.
+
+The global app research provides useful reference categories for these modules, but it does not establish that those external services offer usable APIs or integration rights.&#x20;
+
+Pasted text (3).txt
+
+
+
+## 3. The five most important end-to-end workflows
+
+These workflows are the heart of Godavari One. Build them before adding secondary features.
+
+### Workflow A — Emergency SOS to verified resolution
+
+1. Pilgrim submits SOS
+
+   Selects emergency type, shares location and provides optional details.
+2. Backend creates incident
+
+   Assigns unique ID, timestamp, location, severity and status.
+3. Command centre receives alert
+
+   Shows the incident on the map and in the active incident queue.
+4. Operator assigns responder
+
+   Selects an available authorized team and records the assignment.
+5. Responder accepts and navigates
+
+   Receives incident details and approved location information.
+6. Responder updates progress
+
+   En route → arrived → assisting → resolved or escalated.
+7. Operator verifies closure
+
+   Records the outcome and closes the case with an audit trail.
+
+### Workflow B — Crowd buildup to approved intervention
+
+1. Receive camera-derived counts or simulated footfall data.
+2. Calculate density estimates and rate of change for a mapped zone.
+3. Trigger a configurable threshold alert.
+4. Show the hotspot, confidence, source and time on the command map.
+5. Operator reviews the alert and approves or rejects an intervention.
+6. Authorized teams receive tasks; an approved public alert is sent if required.
+7. System records actions and tracks the hotspot until it is cleared.
+
+### Workflow C — Missing person to verified reunification
+
+1. Pilgrim or help-desk operator creates a missing-person case.
+2. System generates a private case ID and captures only necessary information.
+3. Authorized help desks and staff can search relevant open cases.
+4. A possible match is raised for human review, not automatically confirmed.
+5. Authorized staff verify identity and guardian relationship.
+6. Reunification is recorded, with appropriate confirmation and audit history.
+7. The case is closed and access to sensitive information is restricted.
+
+### Workflow D — Sanitation report to completed task
+
+1. User scans the facility QR code or chooses a facility on the map.
+2. Reports a problem such as unclean toilet, water shortage or damage.
+3. System creates a maintenance ticket.
+4. Supervisor assigns a field worker.
+5. Worker marks work started and submits completion evidence.
+6. Supervisor verifies completion.
+7. Facility status and service history update.
+
+### Workflow E — Offline incident to synchronized case
+
+1. Responder or field worker loses connectivity.
+2. App stores permitted updates in a local encrypted queue.
+3. User can see which actions are pending synchronization.
+4. When the connection returns, the client submits queued events with unique IDs.
+5. Backend deduplicates repeated submissions and applies valid updates.
+6. Conflicts are flagged for review rather than silently overwriting records.
+
+## 4. Technical architecture
+
+
+
+Recommended architecture
+
+&#x20;Modular monolith first, service separation later.
+
+
+
+As a solo developer, avoid starting with 10 microservices, Kubernetes and complicated distributed infrastructure. Build one well-structured backend with independent modules, clear interfaces and background workers. It can be separated into services when traffic and operational needs justify it.
+
+### 4.1 System architecture diagram
+
+\#chatgpt-mermaid-\_r_4t3\_{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;fill:rgb(13, 13, 13);}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#chatgpt-mermaid-\_r_4t3\_ .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_4t3\_ .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#chatgpt-mermaid-\_r_4t3\_ .error-icon{fill:rgb(243, 243, 243);}#chatgpt-mermaid-\_r_4t3\_ .error-text{fill:rgb(13, 13, 13);stroke:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .edge-thickness-normal{stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .edge-thickness-thick{stroke-width:3.5px;}#chatgpt-mermaid-\_r_4t3\_ .edge-pattern-solid{stroke-dasharray:0;}#chatgpt-mermaid-\_r_4t3\_ .edge-thickness-invisible{stroke-width:0;fill:none;}#chatgpt-mermaid-\_r_4t3\_ .edge-pattern-dashed{stroke-dasharray:3;}#chatgpt-mermaid-\_r_4t3\_ .edge-pattern-dotted{stroke-dasharray:2;}#chatgpt-mermaid-\_r_4t3\_ .marker{fill:rgb(143, 143, 143);stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_4t3\_ .marker.cross{stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_4t3\_ svg{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:16px;}#chatgpt-mermaid-\_r_4t3\_ p{margin:0;}#chatgpt-mermaid-\_r_4t3\_ .label{font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .cluster-label text{fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .cluster-label span{color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .cluster-label span p{background-color:transparent;}#chatgpt-mermaid-\_r_4t3\_ .label text,#chatgpt-mermaid-\_r_4t3\_ span{fill:rgb(13, 13, 13);color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .node rect,#chatgpt-mermaid-\_r_4t3\_ .node circle,#chatgpt-mermaid-\_r_4t3\_ .node ellipse,#chatgpt-mermaid-\_r_4t3\_ .node polygon,#chatgpt-mermaid-\_r_4t3\_ .node path{fill:rgb(222, 234, 251);stroke:rgb(83, 154, 248);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .rough-node .label text,#chatgpt-mermaid-\_r_4t3\_ .node .label text,#chatgpt-mermaid-\_r_4t3\_ .image-shape .label,#chatgpt-mermaid-\_r_4t3\_ .icon-shape .label{text-anchor:middle;}#chatgpt-mermaid-\_r_4t3\_ .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .rough-node .label,#chatgpt-mermaid-\_r_4t3\_ .node .label,#chatgpt-mermaid-\_r_4t3\_ .image-shape .label,#chatgpt-mermaid-\_r_4t3\_ .icon-shape .label{text-align:center;}#chatgpt-mermaid-\_r_4t3\_ .node.clickable{cursor:pointer;}#chatgpt-mermaid-\_r_4t3\_ .root .anchor path{fill:rgb(143, 143, 143)!important;stroke-width:0;stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_4t3\_ .arrowheadPath{fill:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_4t3\_ .edgePath .path{stroke:rgb(143, 143, 143);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .flowchart-link{stroke:rgb(143, 143, 143);fill:none;}#chatgpt-mermaid-\_r_4t3\_ .edgeLabel{background-color:rgb(252, 252, 252);text-align:center;}#chatgpt-mermaid-\_r_4t3\_ .edgeLabel p{background-color:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_4t3\_ .edgeLabel rect{opacity:0.5;background-color:rgb(252, 252, 252);fill:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_4t3\_ .labelBkg{background-color:rgba(252, 252, 252, 0.5);}#chatgpt-mermaid-\_r_4t3\_ .cluster rect{fill:rgb(243, 243, 243);stroke:rgba(0, 0, 0, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .cluster text{fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ .cluster span{color:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";font-size:12px;background:rgb(243, 243, 243);border:1px solid rgba(0, 0, 0, 0.1);border-radius:2px;pointer-events:none;z-index:100;}#chatgpt-mermaid-\_r_4t3\_ .flowchartTitleText{text-anchor:middle;font-size:18px;fill:rgb(13, 13, 13);}#chatgpt-mermaid-\_r_4t3\_ rect.text{fill:none;stroke-width:0;}#chatgpt-mermaid-\_r_4t3\_ .icon-shape,#chatgpt-mermaid-\_r_4t3\_ .image-shape{background-color:rgb(252, 252, 252);text-align:center;}#chatgpt-mermaid-\_r_4t3\_ .icon-shape p,#chatgpt-mermaid-\_r_4t3\_ .image-shape p{background-color:rgb(252, 252, 252);padding:2px;}#chatgpt-mermaid-\_r_4t3\_ .icon-shape .label rect,#chatgpt-mermaid-\_r_4t3\_ .image-shape .label rect{opacity:0.5;background-color:rgb(252, 252, 252);fill:rgb(252, 252, 252);}#chatgpt-mermaid-\_r_4t3\_ .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#chatgpt-mermaid-\_r_4t3\_ .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#chatgpt-mermaid-\_r_4t3\_ .node .neo-node{stroke:rgb(83, 154, 248);}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node rect,#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].cluster rect,#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node polygon{stroke:url(#chatgpt-mermaid-\_r_4t3\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].swimlane.cluster rect{filter:none;}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node path{stroke:url(#chatgpt-mermaid-\_r_4t3\_-gradient);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node .outer-path{filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node .neo-line path{stroke:rgb(83, 154, 248);filter:none;}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node circle{stroke:url(#chatgpt-mermaid-\_r_4t3\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].node circle .state-start{fill:#000000;}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].icon-shape .icon{fill:url(#chatgpt-mermaid-\_r_4t3\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_4t3\_ [data-look="neo"].icon-shape .icon-neo path{stroke:url(#chatgpt-mermaid-\_r_4t3\_-gradient);filter:drop-shadow( 1px 2px 2px rgba(185,185,185,1));}#chatgpt-mermaid-\_r_4t3\_ .node text{font-size:14px;font-weight:600;letter-spacing:normal;fill:rgb(0, 79, 153);}#chatgpt-mermaid-\_r_4t3\_ .edgeLabels text{font-size:13px;font-weight:600;letter-spacing:-0.08px;fill:rgb(0, 79, 153);}#chatgpt-mermaid-\_r_4t3\_ .node tspan[font-weight="normal"],#chatgpt-mermaid-\_r_4t3\_ .edgeLabels tspan[font-weight="normal"]{font-weight:600;}#chatgpt-mermaid-\_r_4t3\_ .edgeLabel .label rect{opacity:1;rx:13px;ry:13px;fill:rgb(245, 250, 255);stroke:rgb(206, 219, 229);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .node rect,#chatgpt-mermaid-\_r_4t3\_ .node circle,#chatgpt-mermaid-\_r_4t3\_ .node ellipse,#chatgpt-mermaid-\_r_4t3\_ .node polygon,#chatgpt-mermaid-\_r_4t3\_ .node path{fill:rgb(229, 243, 255);stroke:rgba(0, 0, 0, 0.1);stroke-width:1px;}#chatgpt-mermaid-\_r_4t3\_ .node rect{rx:16px;ry:16px;}#chatgpt-mermaid-\_r_4t3\_ .mermaid-decision .label-container{fill:rgb(245, 250, 255);stroke:rgb(206, 219, 229);stroke-dasharray:2,2;}#chatgpt-mermaid-\_r_4t3\_ .edgePaths .flowchart-link{stroke:rgb(143, 143, 143);stroke-width:1px;stroke-linecap:round;stroke-linejoin:round;}#chatgpt-mermaid-\_r_4t3\_ .marker{fill:rgb(143, 143, 143);stroke:rgb(143, 143, 143);}#chatgpt-mermaid-\_r_4t3\_ :root{--mermaid-font-family:-apple-system-body,ui-sans-serif,-apple-system,system-ui,"Segoe UI",Helvetica,"Apple Color Emoji",Arial,sans-serif,"Segoe UI Emoji","Segoe UI Symbol";}External / authorized data sourcesData and infrastructureGodavari One backend modulesApplication edgeUser-facing applicationsAuthorized CCTV / VideoIoT / SensorsSMS / Push GatewayWeather / Official FeedsOpenStreetMap / GISPostgreSQL + PostGISRedisObject StorageBackground Job QueueIdentity & RBACSOS & Incident ManagementCrowd IntelligenceLost & FoundGIS & FacilitiesField Tasks & WorkforceNotifications & Public AlertsReports & AnalyticsCDN / Static HostingHTTPS / Rate LimitingAPI Gateway / FastAPIPilgrim PWAResponder PWAField Operations PWAAuthority Dashboard
+
+The diagram is a proposed design, not a description of an existing government deployment.
+
+### 4.2 Recommended technology stack
+
+| Layer                             | Recommended choice                | Why                                            |
+| --------------------------------- | --------------------------------- | ---------------------------------------------- |
+| Pilgrim, responder and field apps | React + TypeScript + Vite         | One reusable responsive frontend               |
+| Admin dashboard                   | React + TypeScript                | Shared components and permissions              |
+| UI styling                        | Tailwind CSS + shadcn/ui          | Fast, consistent interface development         |
+| Maps                              | Leaflet + OpenStreetMap           | Flexible geospatial display                    |
+| Backend                           | Python + FastAPI                  | Typed APIs and strong Python ecosystem         |
+| Database                          | PostgreSQL + PostGIS              | Spatial queries and reliable relational data   |
+| ORM and migrations                | SQLAlchemy + Alembic              | Maintainable schema evolution                  |
+| Real-time                         | WebSockets                        | Live incidents and operational updates         |
+| Cache and job queue               | Redis + Celery or equivalent      | Background processing and transient state      |
+| Crowd AI                          | OpenCV + YOLO / P2PNet evaluation | Video processing and density estimation        |
+| Offline support                   | PWA + IndexedDB                   | Local caching and queued operations            |
+| Authentication                    | OIDC-compatible identity provider | Secure sign-in and role-based access           |
+| Notifications                     | Web Push + FCM + SMS gateway      | Multi-channel communication                    |
+| File storage                      | S3-compatible object storage      | Reports, authorized evidence and exports       |
+| Monitoring                        | OpenTelemetry + structured logs   | Debugging, performance and auditability        |
+| Deployment                        | Docker + managed database         | Reproducible deployment and simpler operations |
+
+Solo-developer optimization: start with a single React codebase using separate route groups for each interface. Keep shared design components, but use distinct navigation and permissions for each role.
+
+### 4.3 Suggested repository structure
+
+```
+godavari-one/
+│
+├── apps/
+│   ├── web/
+│   │   ├── src/
+│   │   │   ├── apps/
+│   │   │   │   ├── pilgrim/
+│   │   │   │   ├── command-centre/
+│   │   │   │   ├── responder/
+│   │   │   │   └── field-operations/
+│   │   │   ├── components/
+│   │   │   ├── maps/
+│   │   │   ├── hooks/
+│   │   │   ├── services/
+│   │   │   └── offline/
+│   │   └── public/
+│   │
+│   └── api/
+│       ├── app/
+│       │   ├── core/
+│       │   ├── auth/
+│       │   ├── incidents/
+│       │   ├── crowd/
+│       │   ├── lost_found/
+│       │   ├── facilities/
+│       │   ├── tasks/
+│       │   ├── alerts/
+│       │   ├── analytics/
+│       │   ├── integrations/
+│       │   └── main.py
+│       ├── migrations/
+│       └── tests/
+│
+├── ml/
+│   ├── crowd_counting/
+│   ├── risk_rules/
+│   └── evaluation/
+│
+├── infrastructure/
+│   ├── docker/
+│   ├── deployment/
+│   └── monitoring/
+│
+├── docs/
+│   ├── architecture/
+│   ├── api/
+│   ├── security/
+│   └── user-guides/
+│
+└── docker-compose.yml
+```
+
+### 4.4 Database design
+
+Use PostgreSQL as the source of truth. PostGIS should handle locations, zones, routes and proximity queries.
+
+Core tables:
+
+| Table                 | Important fields                                       | Purpose                          |
+| --------------------- | ------------------------------------------------------ | -------------------------------- |
+| `users`               | id, name, phone/email, status                          | User accounts                    |
+| `roles`               | id, role_name                                          | Permission groups                |
+| `user_roles`          | user_id, role_id, department_id                        | Role assignment                  |
+| `departments`         | id, name, contact                                      | Police, medical, municipal, etc. |
+| `zones`               | id, name, boundary geometry, risk settings             | Ghats and operational areas      |
+| `facilities`          | id, name, type, location, status                       | Toilets, hospitals, help desks   |
+| `incidents`           | id, type, severity, status, location, created_at       | Main incident record             |
+| `incident_events`     | id, incident_id, event_type, actor_id, timestamp       | Immutable event history          |
+| `assignments`         | incident_id, responder_id, assigned_at, status         | Dispatch records                 |
+| `responder_locations` | responder_id, location, recorded_at                    | Authorized team locations        |
+| `lost_person_cases`   | id, case_type, restricted_details, status              | Missing/found cases              |
+| `crowd_observations`  | zone_id, count_estimate, confidence, source, timestamp | Crowd data                       |
+| `alerts`              | id, message, language, target_zone, approval_status    | Public announcements             |
+| `field_tasks`         | id, facility_id, assigned_to, status, due_at           | Field work                       |
+| `task_evidence`       | task_id, file_id, submitted_by, timestamp              | Completion evidence              |
+| `sync_operations`     | client_operation_id, user_id, status                   | Offline synchronization          |
+| `audit_logs`          | actor_id, action, resource, timestamp                  | Security and accountability      |
+
+Use UUIDs for primary identifiers. Use geometry/geography columns for mapped data, spatial indexes for location searches, and UTC timestamps internally. Display event-local time in the interface.
+
+Data design rules
+
+- Store operational changes as events, not just overwrites of a status field.
+- Keep sensitive missing-person information in restricted tables or fields with stricter access.
+- Separate public facility information from internal operational notes.
+- Store large media in object storage; store references and metadata in PostgreSQL.
+- Define retention policies for location history, SOS records, photos and personal information before a real deployment.
+
+### 4.5 Core API design
+
+Use versioned REST endpoints for standard operations and WebSockets for live updates.
+
+| Feature            | Example endpoint                          | Purpose                      |
+| ------------------ | ----------------------------------------- | ---------------------------- |
+| Authentication     | `POST /api/v1/auth/login`                 | Sign in                      |
+| User profile       | `GET /api/v1/users/me`                    | Current user and permissions |
+| Facilities         | `GET /api/v1/facilities?near=...`         | Nearby facilities            |
+| Map zones          | `GET /api/v1/zones`                       | Event geographies            |
+| Create SOS         | `POST /api/v1/incidents`                  | Submit emergency             |
+| Incident queue     | `GET /api/v1/incidents`                   | Filter incidents             |
+| Incident detail    | `GET /api/v1/incidents/{id}`              | View incident                |
+| Assign responder   | `POST /api/v1/incidents/{id}/assignments` | Dispatch team                |
+| Update incident    | `PATCH /api/v1/incidents/{id}`            | Change allowed status        |
+| Incident history   | `GET /api/v1/incidents/{id}/events`       | Audit trail                  |
+| Lost-person report | `POST /api/v1/lost-found/cases`           | Create case                  |
+| Crowd observations | `POST /api/v1/crowd/observations`         | Submit count data            |
+| Crowd map          | `GET /api/v1/crowd/observations`          | Display density              |
+| Field tasks        | `GET /api/v1/tasks`                       | View assigned work           |
+| Complete task      | `POST /api/v1/tasks/{id}/complete`        | Submit completion            |
+| Public alert       | `POST /api/v1/alerts`                     | Create draft announcement    |
+| Approve alert      | `POST /api/v1/alerts/{id}/approve`        | Authorized publication       |
+| Offline sync       | `POST /api/v1/sync/batch`                 | Submit queued changes        |
+
+Example real-time channels:
+
+```
+/ws/command-centre
+/ws/incidents
+/ws/responders
+/ws/crowd
+/ws/alerts
+/ws/field-tasks
+```
+
+WebSocket messages should contain an event ID, event type, resource ID, timestamp, version and permitted payload. The server must enforce the same authorization rules as REST.
+
+### 4.6 Incident status model
+
+Use a controlled state machine. Don't allow arbitrary status changes from the frontend.
+
+```
+REPORTED
+   |
+   v
+ACKNOWLEDGED
+   |
+   v
+ASSIGNED
+   |
+   v
+ACCEPTED
+   |
+   v
+EN_ROUTE
+   |
+   v
+ON_SCENE
+   |
+   v
+RESOLVED
+   |
+   v
+CLOSED
+```
+
+Additional states: `DUPLICATE`, `CANCELLED`, `ESCALATED`, `REJECTED`.
+
+Every transition should have an actor, timestamp and reason. For example, a responder may update `EN_ROUTE` to `ON_SCENE`, but only an authorized operator or supervisor should be able to reopen or close a disputed case.
+
+### 4.7 Offline-first engineering
+
+This is one of the strongest product differentiators for the event.
+
+Implement:
+
+- App shell and essential public information cached for offline use.
+- Cached map tiles only where licensing and usage terms permit.
+- IndexedDB queue for permitted incident and field-task actions.
+- Unique client-generated operation IDs to prevent duplicate submissions.
+- Retry with exponential backoff.
+- Visible `Offline`, `Pending sync`, `Synced` and `Needs attention` states.
+- Conflict detection and audit records.
+- Explicit warning when GPS or a live connection is unavailable.
+
+Do not promise that an SOS can reach authorities while a device has no network connection. Offline mode can save a report locally and synchronize it later, but a user must be told clearly that it has not yet reached the command centre. Provide alternative emergency contact instructions approved by the organizers.
+
+## 5. Screen-by-screen UI plan
+
+Use one shared visual system, but give each user type a different navigation structure. The interface should be highly readable outdoors, usable on low-end Android devices and functional with large touch targets.
+
+### Visual design system
+
+## Godavari One design direction
+
+Suggested palette: deep river green, teal, saffron accent, warm off-white and charcoal. These are proposed brand choices.
+
+Typography: Inter or Noto Sans; use Noto Sans Telugu for Telugu text.
+
+UI principles:
+
+- Large text and touch targets for outdoor use.
+- Clear icons with text labels, not icons alone.
+- High-contrast emergency and warning states.
+- Consistent terminology in Telugu, Hindi and English.
+- Never use color alone to communicate incident status.
+- Every critical screen should expose connectivity and data freshness.
+
+### A. Pilgrim app screens
+
+[Forest department launches ‘Ayyan’ app for Sabarimala pilgrims](https://images.openai.com/static-rsc-4/VysLWLd3h5x96UyHbFEBZ4tJWAuCozDGsmPTF-NZVGeJSha2zMz0gVQFX-up5fhLSP_wqC7gN3cFhrxSleG8TQyeMzlyTlmbSUvaSAVIzi9fKlix0Vf671DLp2atn7BsP4eHe2N0y2NTywAFWLtMHGA-QrYXbN3c35R8r4LqUUI?purpose=inline)
+
+[Záchranka-App startet Universal-SOS-Button in fünf Ländern](https://images.openai.com/static-rsc-4/BkMFZUx99r0YzkD4in18BhyqmWp6EX-je28q1TXeBwXCm1pnsK1X2ufkBPLGHjqzx73IOpkBoRi82tD5muelkz5gKfh_xy0iXs18dbXFn0Y9YgANCNxYK7-DPp2IPuAvg88J7Kq9bqyf1jmAElRFjxGoRZqgJ_6gA3kW5M6-OJI?purpose=inline)
+
+[Empower your Team and Build Exceptional Chatbots with Ease](https://images.openai.com/static-rsc-4/89ljunKueNS8fuvtwdp7F_09ILX_TnHpxUg6PIQ_hx8C7fZtyixlZgkHjwvCnc8QPXt2IgF1ZX3RzSVfsxiN9FA8x7bgr5uW4RxuajYGlyrjxrHvSUuzKBEFvxjflfFamWi8NXadaLkwjU4OE199hLzdKajQkQNaBOXLJxSSLb0?purpose=inline)
+
+10
+
+| Screen                   | UI components                                            | Main actions                     |
+| ------------------------ | -------------------------------------------------------- | -------------------------------- |
+| P01. Welcome             | Logo, language selection, accessibility settings         | Choose language                  |
+| P02. Home                | Event status, search, quick actions, important notices   | Navigate to features             |
+| P03. Event information   | Bathing dates, official announcements, schedules         | View verified details            |
+| P04. Interactive map     | Ghats, routes, hospitals, toilets, parking, help desks   | Find and navigate                |
+| P05. Facility details    | Name, location, service status, accessibility            | Get directions/report issue      |
+| P06. SOS                 | Emergency type, GPS status, details, consent             | Submit emergency                 |
+| P07. SOS tracking        | Case ID, received/pending status, approved updates       | View status/contact instructions |
+| P08. Lost-person report  | Person details, last-seen place/time, authorized contact | Submit private case              |
+| P09. Found-person report | Basic description, location, help-desk instructions      | Notify authorized team           |
+| P10. Assistant           | Text, voice, language, suggested questions               | Ask questions                    |
+| P11. Public alerts       | Official alerts, affected zones, issue time              | Read instructions                |
+| P12. Transport           | Parking, shuttle points, road closures                   | View transport information       |
+| P13. Health and safety   | First aid, hospitals, medical facilities, river notices  | Find help                        |
+| P14. My reports          | User-submitted SOS and facility reports                  | Track permitted updates          |
+| P15. Settings            | Language, accessibility, privacy, offline information    | Manage preferences               |
+
+Pilgrim home screen layout
+
+GODAVARI ONE
+
+Event info
+
+Welcome to Godavari
+
+Your trusted event information and assistance hub
+
+Search ghats, facilities, routes...
+
+Emergency assistance
+
+Use SOS for an emergency. Your report needs a connection to reach the response team.
+
+# SOS
+
+Request emergency help
+
+Quick services
+
+Map
+
+Medical
+
+Lost person
+
+Transport
+
+Assistant
+
+Alerts
+
+Illustrative layout — not a live application.
+
+### B. Authority command-centre screens
+
+[Emergency Command Center (ECC) | Devpost](https://images.openai.com/static-rsc-4/f78xwq8WByWdVq3YfDx7DP4W64Vegpw29Gm6GJCOdHCw38vqBIKIxoPX6eBjay82wEbIhJJ-Kc9AwMeUGDowj_gSrsJhBunKE3_kG2cui6p4tpYCf8WmmXvEm_llbOObaGfXfUfqNU-7DhOnh73kByAcF0nRSzUd4SEaQp99750?purpose=inline)
+
+[AquaView Project Case Study | Devmethink Portfolio](https://images.openai.com/static-rsc-4/g_Mc0wXSd4G-ddX8EhHNffODoEG1pySYJosKAZyowUNsODMDpfnIhKwcqs8rYdFMMCiLPTSXfIT0eNeVod5tmXGBpPwAV6YNPubphlIhVhacuYHHjd9X84YK3cVSDWEaAOmHlO_dYmpYR1zxpBBCn9Nd347dUDrNmkTzHanZfKw?purpose=inline)
+
+[HEATWAVE — AI-Driven Emergency Dispatch Optimization](https://images.openai.com/static-rsc-4/Hb00-qId_x148sWkkpMknOLIKOkDzMth6Bvsa2gwd78GDJxPs0tPAiFFTdcYQPWoCXgoZNURuz4V6XO5n9ZHU-X-akT2Fm3sqsi3y366r6xm5-2-LP8KFqH9cySlZuKr8StWTXFRJQm5MhsNcRy8lsS3G38yyaRDdmvHgA-bcps?purpose=inline)
+
+12
+
+| Screen                     | UI components                                               | Main actions          |
+| -------------------------- | ----------------------------------------------------------- | --------------------- |
+| A01. Secure login          | Organization identity, authentication                       | Sign in               |
+| A02. Operations overview   | KPI cards, active alerts, unresolved incidents, team status | Open priority item    |
+| A03. Live command map      | Zones, crowd estimates, incidents, teams, facilities        | Filter and inspect    |
+| A04. Incident command      | Case details, priority, timeline, assignment panel          | Assign/escalate       |
+| A05. Crowd intelligence    | Density trends, zone comparisons, data freshness            | Review alert          |
+| A06. Lost-person control   | Restricted case queue, match-review interface               | Verify and assign     |
+| A07. Responder management  | Team list, availability, authorized positions               | Dispatch and reassign |
+| A08. Public alerts         | Draft, preview, translation, target zones, approval         | Approve and publish   |
+| A09. Traffic operations    | Road closures, parking, shuttle and congestion layers       | Coordinate changes    |
+| A10. Facilities operations | Toilets, hospitals, water points, help desks                | Update status         |
+| A11. Sanitation control    | Complaints, pending tasks, overdue work                     | Assign and verify     |
+| A12. Workforce control     | Volunteers, departments, shifts, assignments                | Allocate resources    |
+| A13. Reports and analytics | Incidents, response times, task completion, trends          | Export reports        |
+| A14. Audit and activity    | Actor, event, timestamp, changes                            | Review history        |
+| A15. Admin settings        | Roles, departments, zones, thresholds, configuration        | Manage system         |
+
+Command-centre overview layout
+
+Operations Control
+
+Demo data
+
+# 08
+
+Active incidents
+
+# 03
+
+Priority alerts
+
+# 24
+
+Teams online
+
+Operational map
+
+[Esri India launches Kumbh Mela Web app for information and navigation - The Times of India](https://images.openai.com/static-rsc-4/kvY-pOyTggYcGVF-k5ZSVCQGqxuwr_Ms3ChvDtwuPczOyLa4gImnO3Ipu7WG8iiMLy2-piW5J8qUh5_c4rGsVxSei9gKo1bfZBs4yexqVd5lH_p13MWWuhx1CJeKE4dEURs-3pwGNzfILFwj4MHmaCxOY76P6zGFayNl5NOM02Y?purpose=inline)
+
+[timesofindia.indiatimes.com](https://timesofindia.indiatimes.com/technology/tech-news/esri-india-launches-kumbh-mela-web-app-for-information-and-navigation/articleshow/117266827.cms?utm_source=chatgpt.com)
+
+Crowd zones · Incidents · Facilities
+
+Illustrative
+
+Priority incident queue
+
+INC-1024
+
+Medical assistance
+
+Awaiting assignment
+
+INC-1023
+
+Crowd threshold alert
+
+Under review
+
+INC-1022
+
+Missing-person report
+
+Assigned
+
+### C. Responder app screens
+
+[PulsePoint | Building informed communities](https://images.openai.com/static-rsc-4/8D8jRYTdRnlG5fyeBV8i4K-qgN7BnhwFK9f0cBhyyZRM4ttddrkgCAc4Qy3iUPtrRIQfZfNz9Hg75KHsoue0_5MjBcQ3NdIIteL-gE5yH-4_kkhnzBs4qc2bdP9LcKrtXKdHKVp8h25XI2mQ7Jfw9TR5K-9GLQU4gJb2GPrzAdw?purpose=inline)
+
+[Hilfsorganisationen der Region Bodensee-Oberschwaben-Allgäu starten mit App Corhelper - DRK-Kreisverband  Ravensburg e. V.](https://images.openai.com/static-rsc-4/JNmkXu-LJ9rURRppAyV3B3lMfhxQvRn_UBsTHy-U7xuNQ0-OoN9TiIWM2XqxbwoMdg-Yhlxl26uxoEwk0mI_xKTsbGKpfY1Dm0aTpDra9lBcnfJy8nRPk_5pn0baDkVuMqPkgAQdmLYXpGlhzA0wpf7hxqfStNFivocrlXDiIxM?purpose=inline)
+
+[Self Dispatching / Create an Incident – IamResponding](https://images.openai.com/static-rsc-4/ROt5H8pQt9c8vOj1M8Jyo2kqebefBcrdHRMV2bSDc1HWL00GzdZ8TOFquH-LU1SQtVVUPnU3-l02uzsGU3n7IBItDfWuOLbB65Ch6bOC67G5qfSZUtrjmEOipqJmxcSbZkOpRfxVnvJStfko_cF5NpqAH9Ng7kIhVYA-pGjBXLE?purpose=inline)
+
+12
+
+| Screen               | UI components                                   | Main actions                  |
+| -------------------- | ----------------------------------------------- | ----------------------------- |
+| R01. Login           | Staff credentials, device status                | Sign in                       |
+| R02. Responder home  | Availability, assigned cases, alerts            | View assignment               |
+| R03. Incident detail | Case ID, type, severity, location, instructions | Accept/reject                 |
+| R04. Navigation      | Map, destination, route notes                   | Navigate                      |
+| R05. Status update   | En route, arrived, assisting, resolved          | Update case                   |
+| R06. Incident notes  | Structured notes, permitted attachments         | Submit update                 |
+| R07. Request support | Additional team, equipment, escalation          | Request support               |
+| R08. My history      | Completed and active assignments                | Review cases                  |
+| R09. Offline queue   | Pending updates and sync state                  | Retry synchronization         |
+| R10. Profile         | Team, department, availability                  | Update permitted profile data |
+
+### D. Field operations app screens
+
+[Checklists for everything with Fieldly](https://images.openai.com/static-rsc-4/7k8uOyhpKstVmj7eX6vGBIEg3bZu4BiaaDjdOHgxGS_sL1_nh-CBra6mpjHaCK1mBMyJ7C2yeMABExnL4YIIaf5oVQNvVAedR6rQ0IlwMFr1GMmTBe-PFJV8CBnUX4h-a_nKAL92Q-4HJvAIRXo-zLftKpvdfsosdFfSi1bSklg?purpose=inline)
+
+[종이 기록 없이 끝내는 상가 방역소독 관리법 | 하다](https://images.openai.com/static-rsc-4/xShvdZ7juTDxK7TUk41lFToyIkDYeS0aDENgOTEs6BJv_BTnyBuMq1DdGpYM4z1oxa4D4y16mgUq4sRb-3BMvJv026PqxEyZxcDqWcMYWy4Yxmz35C6arG2fMFTvWcJ6mKPD4CQdq0mjVKMeRS4tX48-Nh_V79F6kefHV27v60M?purpose=inline)
+
+[Volunteer Management Software | Volunteer Systems | Vome Volunteer](https://images.openai.com/static-rsc-4/ozyzNWFhsgCN7LPvI0wPITNw6fawzWC-jf05hKgOPag42JyMQXy97qiIIPgqmc7v-_sekoaXYQMdsfI8JQ1OkDg4LVDL2QzLYR-E1ipszMiVMLhL9E-w1Ljo-fuIH_6HwyFM0PX6MN3OWiI4G2kyGKhUTSQJYMfXXWddJc6zPjQ?purpose=inline)
+
+7
+
+| Screen                    | UI components                              | Main actions      |
+| ------------------------- | ------------------------------------------ | ----------------- |
+| F01. Login                | Staff ID, authentication                   | Sign in           |
+| F02. Field home           | Today's assignments, pending tasks         | Open task         |
+| F03. Task details         | Location, priority, instructions, deadline | Accept task       |
+| F04. Map and navigation   | Facility location, route, access notes     | Navigate          |
+| F05. QR facility scan     | QR scanner and facility identity           | Open facility     |
+| F06. Inspection checklist | Cleanliness, water, damage, accessibility  | Submit inspection |
+| F07. Completion evidence  | Notes, photo, timestamp                    | Mark complete     |
+| F08. Volunteer shifts     | Shift schedule and check-in                | Start/end shift   |
+| F09. Offline queue        | Pending field updates                      | Synchronize       |
+| F10. Profile and help     | Assigned area, role, support contacts      | View account      |
+
+### E. Shared design and system screens
+
+These are often forgotten but are essential to a real multi-interface product:
+
+- Registration and account recovery.
+- Language selector.
+- Permission and consent screens.
+- Location permission explanation.
+- Notification preferences.
+- Offline and synchronization status.
+- Empty, loading and error states.
+- Unauthorized access and expired-session screens.
+- Data freshness and source attribution.
+- System health and integration status.
+- Audit history and data export controls.
+
+## 6. AI and intelligence layer
+
+Avoid making the whole product depend on AI. Most of its value comes from reliable workflows, accurate location data and coordinated operations.
+
+Build AI as separate, testable capabilities.
+
+| AI capability           | Proposed implementation                                            | Human oversight                      |
+| ----------------------- | ------------------------------------------------------------------ | ------------------------------------ |
+| Crowd counting          | OpenCV + evaluated YOLO/P2PNet model                               | Operator validates unusual readings  |
+| Crowd risk scoring      | Configurable rules using density, rate of change and zone capacity | Operator approves intervention       |
+| Duplicate SOS detection | Location/time/type similarity rules                                | Operator confirms duplicates         |
+| Lost-person assistance  | Structured search and possible-match ranking                       | Authorized staff verify identity     |
+| Multilingual assistant  | LLM + verified event knowledge base                                | Official information takes priority  |
+| Alert translation       | Translation API/model with approved terminology                    | Authorized review before publication |
+| Incident summarization  | Structured incident data + LLM summary                             | Operator checks summary              |
+
+### Crowd-risk engine
+
+Start with explainable rules rather than claiming to predict stampedes.
+
+For each zone, calculate:
+
+- Estimated people per square metre, where usable area data is available.
+- Change in estimated count over a time window.
+- Entry versus exit count imbalance.
+- Duration above a configured threshold.
+- Data confidence and last observation time.
+
+An example rule:
+
+```
+if density_estimate >= zone.warning_threshold:    create_alert(        zone_id=zone.id,        level="WARNING",        reason="Configured density threshold exceeded"    )if density_estimate >= zone.critical_threshold:    create_alert(        zone_id=zone.id,        level="CRITICAL",        reason="Configured critical threshold exceeded"    )
+```
+
+The thresholds must be determined and validated with competent crowd-safety professionals. The example is not a safety standard.
+
+### Multilingual assistant
+
+The assistant should answer from an approved knowledge base, not freely invent event information.
+
+Its knowledge base should contain:
+
+- Official event notices.
+- Approved bathing schedules.
+- Official routes and closures.
+- Facility directory.
+- Emergency contact instructions.
+- Medical and help-desk information.
+- Frequently asked questions.
+- Approved Telugu, Hindi and English terminology.
+
+Include a source and last-updated time for important answers. If information is unavailable, the assistant should say so and direct the user to an official help desk.
+
+## 7. Development roadmap
+
+You want the complete platform immediately. I would preserve that ambition at the architecture and product level, but develop it through working vertical slices.
+
+For one advanced developer, attempting all 15 modules, four interfaces, AI, real-time integrations and production deployment simultaneously is likely to produce a large but unreliable prototype.
+
+The plan below gives you a complete ecosystem design, with a deployable core first and the other modules integrated in sequence.
+
+# Proposed 24-week solo development plan
+
+Planning estimate, not a guaranteed delivery schedule. Assumes full-time development and access to test data.
+
+1. Weeks 1–2: Foundation
+   - Finalize requirements and user permissions.
+   - Set up repository, Docker and CI.
+   - Implement database and authentication.
+   - Establish design system and routing.
+   - Create zone and facility seed data.
+   Deliverable: Running platform foundation
+2. Weeks 3–5: Incident and emergency system
+   - SOS submission.
+   - Incident queue and case detail.
+   - Assignment and responder workflow.
+   - Incident event history.
+   - Real-time incident updates.
+   - Role and department restrictions.
+   Deliverable: End-to-end emergency workflow
+3. Weeks 6–7: Responder and field applications
+   - Responder assignments.
+   - Status updates and navigation.
+   - Field task management.
+   - Offline queue and synchronization.
+   - Conflict handling.
+   Deliverable: Operational mobile interfaces
+4. Weeks 8–9: Command centre
+   - Live operational dashboard.
+   - Incident and facility map.
+   - Responder status.
+   - Alert management.
+   - Audit logs and reporting.
+   Deliverable: Unified operations dashboard
+5. Weeks 10–11: Pilgrim application
+   - Home and event information.
+   - Interactive facility map.
+   - SOS and report tracking.
+   - Multilingual interface.
+   - Public notices.
+   Deliverable: Pilgrim-facing application
+6. Weeks 12–13: Lost and found
+   - Missing-person and found-person workflows.
+   - Private case management.
+   - Authorized search.
+   - Match review and verified reunification.
+   Deliverable: Lost-person workflow
+7. Weeks 14–15: Crowd intelligence
+   - Video ingestion and sample datasets.
+   - Crowd counting model evaluation.
+   - Zone-level density display.
+   - Threshold alerts.
+   - Human approval workflow.
+   Deliverable: Demonstrable crowd intelligence
+8. Weeks 16–17: Facilities and sanitation
+   - Facility directory and status.
+   - QR-based reporting.
+   - Cleaning task assignment.
+   - Completion evidence.
+   - Supervisor verification.
+   Deliverable: Facility operations
+9. Weeks 18–19: Transport, river safety and medical services
+   - Parking and shuttle information.
+   - Traffic and closure layers.
+   - Medical directory.
+   - Official river safety information.
+   - Environmental observations.
+   Deliverable: Event services integration
+10. Weeks 20–21: Assistant, alerts and workforce
+    - Verified multilingual assistant.
+    - Public notification approval.
+    - Volunteer registration and shifts.
+    - Task allocation and reporting.
+    - Tourism and heritage information.
+    Deliverable: Complete feature ecosystem
+11. Weeks 22–24: Hardening and deployment
+    - Security testing.
+    - Load and failure testing.
+    - Offline reliability tests.
+    - Accessibility and language QA.
+    - Monitoring and backup.
+    - Deployment documentation.
+    - Pilot and stakeholder feedback.
+    Deliverable: Pilot-ready release candidate
+
+### Recommended development milestones
+
+| Milestone | What must work                            |
+| --------- | ----------------------------------------- |
+| M1        | Authentication, roles, map and database   |
+| M2        | SOS → incident → assignment → resolution  |
+| M3        | Responder app and offline synchronization |
+| M4        | Command-centre dashboard                  |
+| M5        | Pilgrim app                               |
+| M6        | Lost-person workflow                      |
+| M7        | Crowd intelligence                        |
+| M8        | Facilities and field operations           |
+| M9        | Remaining event services                  |
+| M10       | Production hardening and pilot validation |
+
+Do not wait until Week 24 to test the entire product. Test each milestone with realistic failure scenarios before adding the next major module.
+
+## 8. Development priorities for a solo advanced developer
+
+### Build in this order
+
+## Your first development sequence
+
+1. Database schema and permission system.
+2. Incident creation and lifecycle APIs.
+3. Command-centre incident queue.
+4. Responder assignment and mobile status updates.
+5. Real-time notifications.
+6. Offline synchronization.
+7. Pilgrim SOS and report tracking.
+8. GIS facilities and zones.
+9. Lost-person management.
+10. Crowd analytics and supporting modules.
+
+Why this order? It gives you a functioning, testable public-safety system early. The same incident and task infrastructure can subsequently support sanitation, medical assistance, crowd alerts and field operations.
+
+### Features you should not build from scratch
+
+Use existing, properly licensed tools where possible:
+
+- Map rendering: Leaflet.
+- Base geographic data: OpenStreetMap, subject to its attribution and usage requirements.
+- Authentication: established OIDC provider.
+- Database: PostgreSQL/PostGIS.
+- Real-time transport: WebSockets.
+- Background processing: established job queue.
+- Monitoring: OpenTelemetry-compatible stack.
+- Translation: approved language services or BHASHINI-compatible integration, subject to access and terms.
+- Crowd counting: evaluate P2PNet and other existing implementations before training a new model.
+
+Your earlier GitHub research shortlisted DevYatra as a pilgrimage architecture reference, P2PNet for crowd counting and Crowd Sense 360 for web application patterns. Inspect each repository's code, dependencies, license and maintenance status before reusing anything.&#x20;
+
+Pasted text (4).txt
+
+
+
+## 9. Security, privacy and reliability requirements
+
+This is not an ordinary event-management application. It may handle sensitive personal information and safety-related decisions.
+
+### Minimum security controls
+
+| Area                  | Required control                                              |
+| --------------------- | ------------------------------------------------------------- |
+| Authentication        | Strong authentication for staff and administrators            |
+| Authorization         | RBAC plus department and geographic scope                     |
+| Data in transit       | HTTPS/TLS                                                     |
+| Data at rest          | Encrypted database and object storage                         |
+| Sensitive information | Restricted access and minimized collection                    |
+| Lost-person reports   | Private-by-default access and controlled disclosure           |
+| Audit                 | Append-only records of sensitive actions                      |
+| File uploads          | Type validation, size limits and malware scanning             |
+| API                   | Rate limiting, input validation and secure session management |
+| Backups               | Automated backups and tested restoration                      |
+| Public alerts         | Draft, approval and publication history                       |
+| Location tracking     | Authorized purpose, restricted access and retention limits    |
+
+Before a real deployment, have the responsible government and security teams review the applicable Indian data-protection, cybersecurity, emergency-response and procurement requirements.
+
+### Reliability scenarios to test
+
+1. Internet connection disappears during SOS submission.
+2. Same SOS is submitted multiple times.
+3. Two operators assign the same responder.
+4. Responder phone restarts with unsynchronized updates.
+5. GPS is unavailable or inaccurate.
+6. Camera feed stops sending observations.
+7. Crowd model returns a low-confidence estimate.
+8. An unauthorized user attempts to access a missing-person report.
+9. An alert is drafted but not approved.
+10. Database or notification provider becomes unavailable.
+
+For each scenario, define the expected user experience and recovery procedure. A reliable system must make uncertainty visible rather than displaying false certainty.
+
+## 10. Testing and performance measurement
+
+Your product should demonstrate measurable performance, not just attractive UI screens.
+
+| Metric                    | What to measure                                            |
+| ------------------------- | ---------------------------------------------------------- |
+| SOS acknowledgement time  | Submission to command-centre acknowledgement               |
+| Dispatch time             | Acknowledgement to responder assignment                    |
+| Responder acceptance time | Assignment to acceptance                                   |
+| Incident closure time     | Submission to verified resolution                          |
+| Duplicate handling        | Percentage of duplicate cases correctly flagged for review |
+| Offline synchronization   | Successful queued operations after reconnection            |
+| Crowd model quality       | Counting error on a labelled test dataset                  |
+| Alert latency             | Observation to operator-visible alert                      |
+| Notification delivery     | Successful versus failed delivery                          |
+| Field task completion     | Assigned, completed and supervisor-verified tasks          |
+| System availability       | Service uptime and recovery time                           |
+
+Use test data and repeatable simulations to establish baselines. Do not claim actual emergency response improvements until the system has been evaluated in a controlled pilot with authorized personnel.
+
+### Suggested acceptance criteria for your own prototype
+
+These are proposed engineering targets, not official challenge requirements:
+
+- All critical incident transitions are recorded.
+- Duplicate client submissions do not create duplicate incidents.
+- Unauthorized roles cannot access restricted records.
+- Offline operations synchronize without silently losing history.
+- Dashboard updates are visible within a defined target latency under your test load.
+- Crowd observations display source, timestamp and confidence.
+- Every public safety announcement requires an authorized approval step.
+- Every major workflow has automated tests.
+
+## 11. Deployment and production architecture
+
+Use separate environments. Do not develop directly on your production database.
+
+| Environment | Purpose                            |
+| ----------- | ---------------------------------- |
+| Local       | Daily development                  |
+| Development | Shared integration testing         |
+| Staging     | Production-like acceptance testing |
+| Production  | Authorized live deployment         |
+
+### Deployment components
+
+```
+Internet
+   |
+CDN / Web hosting
+   |
+HTTPS reverse proxy
+   |
+FastAPI backend
+   |
+   +---- PostgreSQL + PostGIS
+   |
+   +---- Redis / Job queue
+   |
+   +---- Object storage
+   |
+   +---- Background workers
+   |
+   +---- Notification provider
+   |
+   +---- Authorized data integrations
+```
+
+### Deployment checklist
+
+- Domain and HTTPS.
+- Environment-specific secrets.
+- Database migrations.
+- Database backup and restore.
+- Monitoring and error reporting.
+- API rate limits.
+- Role-based admin account provisioning.
+- Notification provider configuration.
+- Offline and reconnect testing.
+- Data retention policy.
+- Incident escalation procedures.
+- Deployment rollback procedure.
+- Operational support documentation.
+
+For the hackathon, use clearly labelled simulated data where official data is unavailable. Before live deployment, obtain written permission and technical specifications for CCTV, traffic, government, emergency-service, transport and sensor integrations.
+
+## 12. What makes Godavari One different?
+
+There are already pilgrimage apps, maps, crowd analytics platforms, emergency applications and sanitation tools. Your differentiation should not be that you have more modules.
+
+It should be the unified operational workflow.
+
+| Common approach          | Godavari One approach                                         |
+| ------------------------ | ------------------------------------------------------------- |
+| Crowd heatmap            | Crowd alert linked to an approved operational action          |
+| Emergency contact number | Structured incident lifecycle and responder dispatch          |
+| Lost-person database     | Restricted case workflow with verified reunification          |
+| Public map               | Map linked to current facility and operational status         |
+| Complaint form           | Complaint converted into assigned, tracked and verified work  |
+| Chatbot                  | Multilingual assistant grounded in verified event information |
+| Dashboard                | Shared operational picture across authorized departments      |
+| Offline form             | Offline queue with synchronization and duplicate protection   |
+
+Your strongest differentiator: the same location, incident, team and task data are shared across the four interfaces, subject to role-based permissions.
+
+## 13. Final product scope and release definition
+
+# Godavari One — Release architecture
+
+Release 1 — Core platform
+
+Essential
+
+Authentication, permissions, incident management, SOS, responder dispatch, command centre, maps, offline synchronization and public alerts.
+
+Release 2 — Event services
+
+Expansion
+
+Lost and found, multilingual assistant, healthcare, traffic, parking, sanitation, waste, volunteer management and facility operations.
+
+Release 3 — Intelligence and integrations
+
+Advanced
+
+Crowd analytics, authorized CCTV, sensor feeds, government APIs, advanced analytics, prediction experiments and operational integrations.
+
+Release 4 — Event-scale deployment
+
+Production
+
+Load-tested infrastructure, security audit, disaster recovery, departmental onboarding, field training, support and approved live operation.
+
+### What you should have at the end
+
+- Four connected user interfaces.
+- One shared backend and database.
+- Fifteen integrated feature modules.
+- A GIS-based operational map.
+- A complete SOS and responder workflow.
+- Lost-person case management.
+- Offline-capable field operations.
+- Crowd observation and risk-alert system.
+- Multilingual pilgrim assistance.
+- Centralized public alert management.
+- Facility and sanitation workflows.
+- Reporting, audit and administration.
+- Deployment and operational documentation.
+
+A complete software ecosystem does not automatically mean an operationally approved event system. Live deployment depends on field testing, official data, agency access, permissions, infrastructure, security review and training.
+
+## 14. Your immediate next step: establish the technical foundation
+
+I recommend starting with the database, shared design system, API contracts and the emergency workflow before implementing the remaining screens.
+
+Here is the initial build checklist:
+
+Foundation checklist
+
+## 0/15
+
+Create GitHub repository and project structure
+
+Create Docker Compose development environment
+
+Set up PostgreSQL and PostGIS
+
+Set up FastAPI and database migrations
+
+Create React + TypeScript application
+
+Build shared design system and responsive layouts
+
+Implement authentication and RBAC
+
+Create zones, facilities and departments
+
+Implement incident creation and state machine
+
+Build command-centre incident queue
+
+Build responder assignment and status updates
+
+Add WebSocket live updates
+
+Add offline queue and synchronization
+
+Build pilgrim SOS flow
+
+Write integration and permission tests
+
+Reset checklist
+
+My final recommendation: build Godavari One as a complete ecosystem in its architecture, but make its first genuinely reliable product the emergency coordination loop. Once that is solid, every additional module can reuse its maps, permissions, notifications, incident records, tasks and audit infrastructure.
+
+That gives you a much stronger foundation than trying to finish 15 independent features at once.

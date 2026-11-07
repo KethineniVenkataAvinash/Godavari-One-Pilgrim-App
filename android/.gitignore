@@ -1,0 +1,83 @@
+# Using Android gitignore template: https://github.com/github/gitignore/blob/HEAD/Android.gitignore
+# cspell:ignore Dalvik Proguard proguard Freeline freeline hprof Cordova cordova
+
+# Android build outputs
+*.aar
+*.ap_
+*.apk
+*.aab
+*.class
+*.dex
+*.hprof
+**/build/
+bin/
+gen/
+out/
+proguard/
+
+# Uncomment if you need to keep release build files
+# release/
+
+# Gradle and native build files
+.cxx/
+.externalNativeBuild/
+.gradle/
+
+# Android Studio and IntelliJ
+.idea/
+*.iml
+.navigation/
+captures/
+
+# Uncomment if Navigation Editor element positions should be preserved
+# .idea/navEditor.xml
+
+# Local configuration and signing credentials
+local.properties
+*.jks
+*.keystore
+
+# Uncomment if keystore files should be checked in
+# *.jks
+# *.keystore
+
+# Logs and profiling
+*.log
+
+# Freeline
+freeline.py
+freeline/
+freeline_project_description.json
+
+# Fastlane
+fastlane/Preview.html
+fastlane/readme.md
+fastlane/report.xml
+fastlane/screenshots
+fastlane/test_output
+
+# Version control
+vcs.xml
+
+# Lint
+lint/generated/
+lint/intermediates/
+lint/outputs/
+lint/tmp/
+# lint/reports/
+
+# Capacitor generated files
+capacitor-cordova-android-plugins/
+app/src/main/assets/capacitor.config.json
+app/src/main/assets/capacitor.plugins.json
+app/src/main/assets/public/
+app/src/main/res/xml/config.xml
+
+# Web dependencies and build output
+dist/
+node_modules/
+
+# Environment files (keep the example template)
+.env
+.env.*
+!.env.example

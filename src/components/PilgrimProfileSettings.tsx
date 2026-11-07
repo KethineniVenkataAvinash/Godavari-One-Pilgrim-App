@@ -1,0 +1,31 @@
+import React,{useState} from 'react';
+import {Camera,User,Save} from 'lucide-react';
+export type PersonalDetails={name:string;phone:string;age:string;city:string;bloodGroup:string;emergencyContactName:string;emergencyContactPhone:string;photoUrl?:string;email?:string;accessibilityNeeds?:string};
+export function PilgrimProfileSettings({profile,onSave}:{profile:PersonalDetails;onSave:(details:PersonalDetails)=>boolean}){
+ const [draft,setDraft]=useState({...profile}),[notice,setNotice]=useState(''),[busy,setBusy]=useState(false);
+ const update=(key:keyof PersonalDetails,value:string)=>setDraft(p=>({...p,[key]:value}));
+ async function upload(file?:File){
+  if(!file)return;
+  if(!['image/jpeg','image/png','image/webp'].includes(file.type)||file.size>5*1024*1024){setNotice('Choose a JPG, PNG or WebP photo under 5 MB.');return;}
+  setBusy(true);setNotice('');const url=URL.createObjectURL(file);
+  try{const image=new Image();image.src=url;await image.decode();if(image.width*image.height>40000000)throw new Error('Image too large');
+   const canvas=document.createElement('canvas');canvas.width=canvas.height=320;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas unavailable');
+   const side=Math.min(image.width,image.height);ctx.fillStyle='#fff';ctx.fillRect(0,0,320,320);ctx.drawImage(image,(image.width-side)/2,(image.height-side)/2,side,side,0,0,320,320);update('photoUrl',canvas.toDataURL('image/jpeg',0.85));setNotice('Photo preview ready. Save changes to keep it.');
+  }catch{setNotice('This photo could not be opened. Try a smaller JPG or PNG.');}finally{URL.revokeObjectURL(url);setBusy(false);}
+ }
+ const field='mt-1 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm text-slate-900';
+ return <form className="rounded-3xl bg-white border border-slate-200 p-4 text-slate-900 space-y-4 shadow-sm" onSubmit={e=>{e.preventDefault();if(!draft.name.trim()){setNotice('Enter your name.');return;}if(draft.emergencyContactPhone&&!/^\+?[\d\s()-]{7,20}$/.test(draft.emergencyContactPhone)){setNotice('Enter a valid emergency phone number.');return;}const next={...draft,name:draft.name.trim()};setNotice(onSave(next)?'Profile saved on this device.':'Unable to save. Browser storage may be full or disabled.');}}>
+  <div><p className="text-[10px] uppercase tracking-widest text-emerald-700 font-bold">Personal settings</p><h3 className="font-bold text-lg mt-1">Make your profile yours</h3></div>
+  <div className="flex flex-wrap items-center gap-4"><div className="w-20 h-20 rounded-full bg-emerald-50 border-4 border-white ring-2 ring-emerald-100 overflow-hidden flex items-center justify-center">{draft.photoUrl?<img src={draft.photoUrl} alt="Profile preview" className="w-full h-full object-cover"/>:<User size={32} className="text-emerald-700"/>}</div><div className="space-y-2"><label className="inline-flex items-center gap-2 rounded-xl bg-emerald-900 px-3 py-2 text-xs font-bold text-white cursor-pointer"><Camera size={16}/>{busy?'Preparing…':'Upload profile photo'}<input disabled={busy} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={e=>{upload(e.target.files?.[0]);e.target.value='';}}/></label>{draft.photoUrl&&<button type="button" onClick={()=>update('photoUrl','')} className="block text-xs text-red-700">Remove photo</button>}<p className="text-[10px] text-slate-500">JPG, PNG or WebP · up to 5 MB<br/>Centered square crop · saved locally</p></div></div>
+  <label className="block text-xs font-semibold">Full name<input className={field} autoComplete="name" required maxLength={80} value={draft.name} onChange={e=>update('name',e.target.value)}/></label>
+  <label className="block text-xs font-semibold">Account mobile<input className={`${field} opacity-60`} readOnly value={profile.phone||'Guest — sign in to add your number'}/></label>
+  <div className="grid grid-cols-2 gap-3"><label className="text-xs font-semibold">Age<input className={field} type="number" min="1" max="120" value={draft.age} onChange={e=>update('age',e.target.value)}/></label><label className="text-xs font-semibold">Blood group<select className={field} value={draft.bloodGroup} onChange={e=>update('bloodGroup',e.target.value)}>{['','A+','A-','B+','B-','AB+','AB-','O+','O-'].map(v=><option key={v} value={v}>{v||'Not specified'}</option>)}</select></label></div>
+  <label className="block text-xs font-semibold">City<input className={field} autoComplete="address-level2" maxLength={80} value={draft.city} onChange={e=>update('city',e.target.value)}/></label>
+  <label className="block text-xs font-semibold">Email (optional)<input type="email" autoComplete="email" className={field} maxLength={160} value={draft.email||''} onChange={e=>update('email',e.target.value)}/></label>
+  <fieldset className="rounded-2xl bg-amber-50 p-3 space-y-3"><legend className="text-xs font-bold">Emergency contact</legend><label className="block text-xs">Contact name<input className={field} maxLength={80} value={draft.emergencyContactName} onChange={e=>update('emergencyContactName',e.target.value)}/></label><label className="block text-xs">Contact phone<input type="tel" className={field} maxLength={20} value={draft.emergencyContactPhone} onChange={e=>update('emergencyContactPhone',e.target.value)}/></label></fieldset>
+  <label className="block text-xs font-semibold">Accessibility or travel needs (optional)<textarea className={field} rows={2} maxLength={500} placeholder="For example, step-free access or a meeting preference" value={draft.accessibilityNeeds||''} onChange={e=>update('accessibilityNeeds',e.target.value)}/></label>
+  <p className="text-[10px] text-slate-500">Details and photo stay in this browser. They are not sent to emergency services.</p>
+  {notice&&<p role="status" className="rounded-xl bg-slate-100 p-3 text-xs">{notice}</p>}
+  <div className="flex gap-2"><button disabled={busy} className="flex-1 flex items-center justify-center gap-2 bg-emerald-900 text-white rounded-xl p-3 text-sm font-bold disabled:opacity-50"><Save size={16}/>Save changes</button><button type="button" onClick={()=>{setDraft({...profile});setNotice('Unsaved edits discarded.');}} className="rounded-xl border border-slate-200 px-4 text-sm">Cancel</button></div>
+ </form>;
+}

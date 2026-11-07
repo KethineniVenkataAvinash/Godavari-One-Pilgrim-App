@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Godavari One Pilgrim</string>
+    <string name="title_activity_main">Godavari One Pilgrim</string>
+    <string name="package_name">com.godavarione.pilgrim</string>
+    <string name="custom_url_scheme">com.godavarione.pilgrim</string>
+</resources>
